@@ -50,7 +50,7 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/kanboard/kanboard/archive/refs/tags/v1.2.37.tar.gz"
+        url = "https://github.com/user-attachments/files/17268996/kanboard-1.2.37.tar.gz"
         sha256 = "dc65cf9ec02b9e869992c8480516a1ef0d6fc23e331db9c489a45d41f1c8ee49"
         autoupdate.strategy = "latest_github_release"
 
