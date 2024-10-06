@@ -1,0 +1,75 @@
+packaging_format = 2
+
+id = "kanboard"
+name = "Kanboard"
+description.en = "Kanban project management software"
+description.fr = "Logiciel de gestion de projet Kanban"
+
+version = "1.2.37~ynh1"
+
+maintainers = []
+
+[upstream]
+license = "MIT"
+website = "https://kanboard.net"
+demo = "https://demo.yunohost.org/kanboard/"
+admindoc = "https://docs.kanboard.org/"
+code = "https://github.com/kanboard/kanboard"
+fund = "https://kanboard.org/#donations"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/kanboard"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.admin]
+    type = "user"
+
+[resources]
+
+    [resources.sources]
+
+        [resources.sources.main]
+        url = "https://github.com/kanboard/kanboard/archive/refs/tags/v1.2.37.tar.gz"
+        sha256 = "dc65cf9ec02b9e869992c8480516a1ef0d6fc23e331db9c489a45d41f1c8ee49"
+        autoupdate.strategy = "latest_github_release"
+
+    [resources.system_user]
+    allow_email = true
+    
+    [resources.install_dir]
+
+    [resources.data_dir]
+    subdirs = ["cache", "files"]
+
+    [resources.permissions]
+    main.url = "/"
+    ics.url = "/?controller=ICalendarController"
+    ics.show_tile = false
+    ics.allowed = "visitors"
+
+    [resources.apt]
+    packages = "mariadb-server, php8.2-opcache, php8.2-curl, php8.2-gd, php8.2-zip, php8.2-xml, php8.2-mbstring, php8.2-mysql, php8.2-ldap"
+
+    [resources.database]
+    type = "mysql"
