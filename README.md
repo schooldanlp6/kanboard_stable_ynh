@@ -1,0 +1,1 @@
+# kanboard_stable_ynh
